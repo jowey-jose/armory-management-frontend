@@ -6,6 +6,7 @@ const AddArmoryItem = () => {
     id: null,
     weapon_category: "",
     weapon_specs: "",
+    assigned_to: "",
     assigned_staff_badge_number: "",
     barcode: "",
     date_issued: "",
@@ -30,6 +31,7 @@ const AddArmoryItem = () => {
     var data = {
         weapon_category: armoryItem.weapon_category,
         weapon_specs: armoryItem.weapon_specs,
+        assigned_to: armoryItem.assigned_to,
         assigned_staff_badge_number: armoryItem.assigned_staff_badge_number,
         barcode: armoryItem.barcode,
         date_issued: armoryItem.date_issued,
@@ -44,6 +46,7 @@ const AddArmoryItem = () => {
           id: response.data.id,
           weapon_category: response.data.weapon_category,
           weapon_specs: response.data.weapon_specs,
+          assigned_to: response.data.assigned_to,
           assigned_staff_badge_number: response.data.assigned_staff_badge_number,
           barcode: response.data.barcode,
           date_issued: response.data.date_issued,
@@ -101,6 +104,20 @@ const AddArmoryItem = () => {
               name="weapon_specs"
             />
         </div>
+
+        <div className="form-group">
+            <label htmlFor="assigned_to">Assigned To</label>
+            <input
+              type="text"
+              className="form-control"
+              id="assigned_to"
+              required
+              value={armoryItem.assigned_to}
+              onChange={handleInputChange}
+              name="assigned_to"
+            />
+
+            </div>
 
           <div className="form-group">
             <label htmlFor="assigned_staff_badge_number">Assigned Staff Number</label>
@@ -180,7 +197,7 @@ const AddArmoryItem = () => {
               name="location"
             />
           </div>
-
+          <br/>
           <button onClick={saveArmoryItem} className="btn btn-success">
             Submit
           </button>

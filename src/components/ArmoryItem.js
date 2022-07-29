@@ -10,6 +10,7 @@ const ArmoryItem = props => {
     id: null,
     weapon_category: "",
     weapon_specs: "",
+    assigned_to: "",
     assigned_staff_badge_number: "",
     barcode: "",
     date_issued: "",
@@ -49,6 +50,7 @@ const ArmoryItem = props => {
         id: currentArmoryItem.id,
         weapon_category: currentArmoryItem.weapon_category,
         weapon_specs: currentArmoryItem.weapon_specs,
+        assigned_to: currentArmoryItem.assigned_to,
         assigned_staff_badge_number: currentArmoryItem.assigned_staff_badge_number,
         barcode: currentArmoryItem.barcode,
         date_issued: currentArmoryItem.date_issued,
@@ -120,6 +122,28 @@ const ArmoryItem = props => {
               />
             </div>
             <div className="form-group">
+              <label htmlFor="assigned_to">Assigned To</label>
+              <input
+                type="text"
+                className="form-control"
+                id="assigned_to"
+                name="assigned_to"
+                value={currentArmoryItem.assigned_to}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="assigned_staff_badge_number">Assigned Staff Number</label>
+              <input
+                type="text"
+                className="form-control"
+                id="assigned_staff_badge_number"
+                name="assigned_staff_badge_number"
+                value={currentArmoryItem.assigned_staff_badge_number}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-group">
               <label htmlFor="barcode">Bar Code</label>
               <input
                 type="text"
@@ -185,27 +209,27 @@ const ArmoryItem = props => {
 
           {currentArmoryItem.is_issued ? (
             <button
-              className="badge badge-primary mr-2"
+              className="btn btn-primary"
               onClick={() => updateIfIssued(false)}
             >
               Un-Issue
             </button>
           ) : (
             <button
-              className="badge badge-primary mr-2"
+              className="btn btn-secondary"
               onClick={() => updateIfIssued(true)}
             >
               Issue
             </button>
           )}
 
-          <button className="badge badge-danger mr-2" onClick={deleteArmoryItem}>
+          <button className="btn btn-danger" onClick={deleteArmoryItem}>
             Delete
           </button>
 
           <button
             type="submit"
-            className="badge badge-success"
+            className="btn btn-success"
             onClick={updateArmoryItem}
           >
             Update
