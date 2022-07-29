@@ -1,46 +1,43 @@
-import React, { Component } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-// import AddWeapon from "./components/add-weapon.component";
-// import WeaponDetails from "./components/weapon-details.component";
-// import ArmoryList from "./components/armory-list.component";
-import Home from "./pages/Home";
+import AddArmoryItem from "./components/AddArmoryItem";
+import ArmoryItem from "./components/ArmoryItem";
+import ArmoryItemList from "./components/ArmoryItemList";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/armory-list"} className="navbar-brand">
-            Armory Management
-          </Link>
-          <div className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/armory-list"} className="nav-link">
-                Armory List
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/add-weapon"} className="nav-link">
-                Add Weapon
-              </Link>
-            </li>
-          </div>
-        </nav>
-
-        <div className="container mt-3">
-          <Switch>
-            <Route exact path={["/", "/home"]} component={Home} />
-            {/* <Route exact path={["/", "/armory-list"]} component={ArmoryList} /> */}
-            {/* <Route exact path="/add-weapon" component={AddWeapon} /> */}
-            {/* <Route path="/weapon-details/:id" component={WeaponDetails} /> */}
-          </Switch>
+function App() {
+  return (
+    <div>
+      <nav className="navbar navbar-expand navbar-dark bg-dark">
+        <a href="/armory-item-list" className="navbar-brand">
+          Armory Management System
+        </a>
+        <div className="navbar-nav mr-auto">
+          <li className="nav-item">
+            <Link to={"/armory-item-list"} className="nav-link">
+              Armory Item List
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to={"/add-armory-item"} className="nav-link">
+              Add
+            </Link>
+          </li>
         </div>
+      </nav>
+
+      <div className="container mt-3">
+        <Routes>
+          <Route path="/" element={<ArmoryItemList/>} />
+          <Route path="/armory-item-list" element={<ArmoryItemList/>} />
+          <Route path="/add-armory-item" element={<AddArmoryItem/>} />
+          <Route path="/armory-item/:id" element={<ArmoryItem/>} />
+        </Routes>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;
